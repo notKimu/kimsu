@@ -1,0 +1,107 @@
+---
+export const prerender = true;
+
+import Layout from "../../layouts/Layout.astro";
+import TitleBar from "../../components/svelte-components/components/TitleBar.svelte";
+---
+
+<Layout title="Kimsu | About">
+    <main class="flex column a-center gap-xx">
+        <article class="macOS flex column gap-xx">
+            <div class="window">
+                <TitleBar title="about-kimsu.sh" type="macOS" />
+    
+                <div class="window-content flex row j-center gap-xx">
+                    <div class="fumo w-max">
+                        <p class="no-wrap">く__,.ヘヽ.　　　　/　,ー､ 〉</p>
+                        <p class="no-wrap">　　　　　＼ ', !-─‐-i　/　/´</p>
+                        <p class="no-wrap">　　　 　 ／｀ｰ'　　　 L/／｀ヽ､</p>
+                        <p class="no-wrap">　　 　 /　 ／,　 /|　 ,　 ,　　　 ',</p>
+                        <p class="no-wrap">　　　ｲ 　/ /-‐/　ｉ　L_ ﾊ ヽ!　 i</p>
+                        <p class="no-wrap">　　　 ﾚ ﾍ 7ｲ｀ﾄ　 ﾚ'ｧ-ﾄ､!ハ|　 |</p>
+                        <p class="no-wrap">　　　　 !,/7 '0'　　 ´0iソ| 　      |　　　</p>
+                        <p class="no-wrap">　　　　 |.从"　　_　　 ,,,, / |./ 　 |</p>
+                        <p class="no-wrap">　　　　 ﾚ'| i＞.､,,__　_,.イ / 　.i 　|</p>
+                        <p class="no-wrap">　　　　　 ﾚ'| | / k_７_/ﾚ'ヽ,　ﾊ.　|</p>
+                        <p class="no-wrap">　　　　　　 | |/i 〈|/　 i　,.ﾍ |　i　|</p>
+                        <p class="no-wrap">　　　　　　.|/ /　ｉ： 　 ﾍ!　　＼　|</p>
+                        <p class="no-wrap">　　　 　 　 kヽ&gt;､ﾊ 　 _,.ﾍ､ 　 /､!</p>
+                        <p class="no-wrap">　　　　　　 !'〈//｀Ｔ´', ＼ ｀'7'ｰr'</p>
+                        <p class="no-wrap">　　　　　　 ﾚ'ヽL__|___i,___,ンﾚ|ノ</p>
+                        <p class="no-wrap">　　　　　 　　　ﾄ-,/　|___./</p>
+                        <p class="no-wrap">　　　　　 　　　'ｰ'　　!_,.:</p>
+                    </div>
+                    <div class="web-info flex column gap-m">
+                        <h2 class="blinker">Kimsu v.2</h2>
+                        <div class="separator-line-s"/>
+                        <p>The open and free page.me creator.</p>
+                        <p>Running on Astro && Svelte.</p>
+                        <p>Special thanks to: <br />&emsp;&#x258C;The amazing open source community<br />&emsp;&#x258C; You for watching ᗜˬᗜ</p>
+                        <p>Made with &gt;3 by <a class="link" href="https://twitter.com/notk1mu" target="_blank">Kimu</a> -w-</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex column gap-m">
+                <h1>What is Kimsu?</h1>
+                <div class="separator-line-s"/>
+                <p>Kimsu is a page to write your own pages to show your socials!</p><br />
+                <p>Twitter for example only lets you having one link on your profile, with Kimsu you can show all your socials there without using bad .me pages that just want you to pay for customization (all of Kimsu is free btw)</p>
+            </div>
+
+            <div class="flex column gap-m">
+                <h1>Discord login</h1>
+                <div class="separator-line-s"/>
+                <p>Logging with Discord is required so one person doesn't create as many pages as they want.</p><br />
+                <p>Only your ID, username and avatar url are saved into the database, then I don't save any more information about you, change all you want!</p>
+            </div>
+    
+            <div class="flex column gap-m">
+                <h1>Any suggestions?</h1>
+                <div class="separator-line-s"/>
+                <p>Kimsu was made in one week as an express project, so there may be some bugs here and there (hehe)</p><br />
+                <p>If you have any suggestions/questions/bugs or just wanna chat you can reach me on <a class="link" href="https://twitter.com/notk1mu" target="_blank">Twitter</a>!</p>
+            </div>
+        </article>
+    </main>
+</Layout>
+
+<style>
+    main {
+        height:  calc(100dvh - var(--header-height));
+        width:   100dvw;
+        padding: 2rem;
+    }
+
+    article {
+        width:          80%;
+        padding-bottom: 2rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .fumo p {
+        color:     #81c7f6;
+        font-size: small;
+    }
+
+    @media screen and (max-width: 800px) {
+        article {
+            width: 100%;
+        }
+    }
+    @media screen and (max-width: 650px) {
+        .window-content {
+            align-items:    center;
+            flex-direction: column-reverse;
+            padding:        1.5rem;
+        }
+    }
+    @media screen and (max-width: 404px) {
+        main {
+            padding: 1rem;
+        }
+    }
+</style>

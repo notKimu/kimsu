@@ -1,0 +1,41 @@
+---
+import "../../../css/globals.css";
+import "../../../css/kwind.css";
+import Page from "../../components/Page.svelte";
+import { getPage } from "../../../api/requests";
+
+const { id } = Astro.params;
+if (!id) return Astro.redirect("/", 308);
+
+const pageData = await getPage(id);
+
+const accessToken = Astro.cookies.get("access_token");
+if (accessToken) {
+    const token = accessToken.value;
+    if (!pageData && token) return Astro.redirect("/create", 308);
+}
+
+if (!pageData) return Astro.redirect("/", 308);
+---
+
+<main class="flex column a-center gap-xx">
+    <Page data={pageData} client:load />
+</main>
+
+<style>
+    main {
+        height:        100dvh;
+        width:         100dvw;
+
+        display:       grid;
+        place-content: center;
+
+        padding:       3rem;
+    }
+
+    @media screen and (max-width: 404px) {
+        main {
+            padding: 1rem;
+        }
+    }
+</style>

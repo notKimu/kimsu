@@ -1,0 +1,120 @@
+--- 
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import "../../css/globals.css";
+import "../../css/kwind.css";
+import { getMe } from "../../api/requests";
+
+let userData = null;
+
+const accessToken = Astro.cookies.get("access_token");
+const token = accessToken ? accessToken.value : undefined;
+
+if (token) {
+	userData = await getMe(token);
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Hiiiiiiiiiiiiiiiiiiiii :3 -->
+		<meta charset="UTF-8" />
+		<meta name="viewport"    content="width=device-width, initial-scale=1.0"> 
+		<meta name="description" content="Simple and open social media sharing platform.">
+		<meta name="viewport"    content="width=device-width" />
+		<meta name="generator"   content={Astro.generator} />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<!-- Social Metadata -->
+		<meta name="description" content="Kimsu social, the free and open social sharing website. Share all your socials in a single page :3" />
+
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:creator" content="notk1mu">
+		
+		<meta property="og:title" content="Kimsu Social" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://social.kimu.pro/" />
+		<meta property="og:image" content="https://cdn.discordapp.com/attachments/1112890871109664848/1146827759021203527/kimsu_social_banner_og_image.png" />
+		<meta property="og:description" content="Kimsu social, the free and open social sharing website. Share all your socials in a single page :3" />
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<header class="flex a-center space-between gap-x blur-bg-m">
+			<a class="h-100 flex a-center gap-m" href="/">
+				<img class="h-100" src="/takeout.webp" />
+				<h2 class="title">Kimsu</h2>
+			</a>
+
+			{userData ? 
+				<button class="user-button has-dropdown hoverme h-100 flex a-center gap-m padding-s radius-s">
+					<h3>{userData.username}</h3>
+					<img class="h-100 circle" src={userData.avatar_uri} />
+					<div class="dropdown column radius-s overflow-hidden blur-bg-m">
+						<a href={"/"+userData.id}><h4>Page</h4></a>
+						<a href="/create"><h4>Page writter</h4></a>
+						<a href="/settings"><h4>Settings</h4></a>
+					</div>
+				</button>
+				:
+				<a href="https://discord.com/oauth2/authorize?client_id=1144209801409212507&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth&response_type=code&scope=identify">
+					<button class="discord flex a-center hoverme default-border">Login</button>
+				</a>
+			}
+		</header>
+		<div class="filler"/>
+
+		<slot />
+	</body>
+</html>
+
+<style>
+	header {
+		height:           var(--header-height);
+		width: 			  100vw;
+		position: 		  fixed;
+
+		background-color: var(--bg-color-dark);
+		padding:          .3rem .7rem;
+
+		z-index: 		  100;
+	}
+
+	.title {
+		font-family: var(--accent-font-m);
+	}
+
+	.filler {
+		height: var(--header-height);
+	}
+
+	.user-button {
+		border-color: transparent;
+
+        overflow-x:   auto;
+		white-space:  nowrap;
+	}
+
+	.user-button h3 {
+		overflow:      hidden;
+		text-overflow: ellipsis;
+	}
+
+	.discord::before {
+		content:       url(../../svg/discord.svg);
+		transform:     scale(0);
+		transition:    transform var(--transition-time);
+	}
+
+	.discord:hover::before {
+		height:        1.2rem;
+		width:         1.2rem;
+		padding-right: .3rem;
+		transform:     scale(1);
+		transition:    transform var(--transition-time);
+	}
+</style>

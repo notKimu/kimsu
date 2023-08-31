@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CreatePage from "../../components/CreatePage.svelte";
+import { getMe, getPage } from "../../../api/requests";
+
+const accessToken = Astro.cookies.get("access_token");
+if (!accessToken) return Astro.redirect("https://discord.com/oauth2/authorize?client_id=1144209801409212507&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth&response_type=code&scope=identify", 308);
+
+const token = accessToken.value;
+if (!token) return Astro.redirect("https://discord.com/oauth2/authorize?client_id=1144209801409212507&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth&response_type=code&scope=identify", 308);
+
+const self = await getMe(token);
+if (!self) return Astro.redirect("https://discord.com/oauth2/authorize?client_id=1144209801409212507&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth&response_type=code&scope=identify", 308);
+
+let userPage = await getPage(self.id);
+if (!userPage) userPage = {
+    page: {
+        theme:        "win32",
+        bg_color:     "#241F31",
+        accent_color: "#8193f6",
+        title_color:  "#ffffff",
+        text_color:   "#F6F5F4",
+        about:        "",
+        socials:      []
+    }, user: self,
+    background: {
+        background: ""
+    }
+}
+---
+
+<Layout title="Kimsu | Create page">
+    <main class="flex column a-center gap-xx">
+        <CreatePage user={self} pageData={userPage} token={token} client:load />
+    </main>
+</Layout>
+
+<style>
+    main {
+        height:  calc(100dvh - var(--header-height));
+        width:   100dvw;
+        padding: 2rem;
+    }
+
+    @media screen and (max-width: 404px) {
+        main {
+            padding: 1rem;
+        }
+    }
+</style>

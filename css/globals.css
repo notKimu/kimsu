@@ -1,0 +1,261 @@
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat-Regular.ttf");
+}
+@font-face {
+    font-family: "blinker-bold";
+    src: url("../fonts/Blinker-Bold.ttf");
+}
+@font-face {
+    font-family: "blinker-medium";
+    src: url("../fonts/Blinker-SemiBold.ttf");
+}
+@font-face {
+    font-family: "windows";
+    src: url("../fonts/Windows.ttf");
+}
+@font-face {
+    font-family: "sono";
+    src: url("../fonts/Sono-Regular.ttf");
+}
+@font-face {
+    font-family: "nunito";
+    src: url("../fonts/Nunito-Regular.ttf");
+}
+@font-face {
+    font-family: "chilet";
+    src: url("../fonts/SmallPrint.ttf");
+}
+@font-face {
+    font-family: "fallback";
+    src: url("../fonts/DroidSansFallback.ttf");
+}
+
+
+:root {
+    --header-height:   4rem;
+
+    --bg-color:        #1E1E2E;
+    --select-color:    #313244;
+  
+    --accent-font-b:   "blinker-bold", "fallback";
+    --accent-font-m:   "blinker-medium", "fallback";
+    --default-font:    "montserrat", "fallback";
+  
+    --smol-border:     .12rem;
+    --smol-radius:     .25rem;
+
+    --transition-time: .15s;
+}
+
+* {
+    box-sizing:  border-box;
+    color:       azure;
+
+    margin:      0;
+    padding:     0;
+
+    font-family: var(--default-font);
+    transition:  var(--transition-time);
+}
+
+body,
+html {
+    background-color: var(--bg-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+select,
+input,
+textarea {
+    background-color: transparent;
+    border-top:       var(--border1);
+    border-left:      var(--border1);
+    border-right:     var(--border2);
+    border-bottom:    var(--border2);
+    border-radius:    var(--border-radius);
+    padding:          .4rem .6rem;
+
+    font-size:        medium;
+    cursor:           pointer;
+}
+
+button, select {
+    width: fit-content;
+}
+
+select, input[type="text"], textarea {
+    max-width:     100%;
+    min-height:    2rem;
+    border-top:    var(--border2);
+    border-left:   var(--border2);
+    border-right:  var(--border1);
+    border-bottom: var(--border1);
+}
+
+.default-border {
+    border: var(--smol-border) solid var(--accent-color);
+}
+
+.hoverme:hover {
+    background-color: var(--accent-color);
+    border-top:       var(--border2);
+    border-left:      var(--border2);
+    border-right:     var(--border1);
+    border-bottom:    var(--border1);
+}
+
+
+/**THEMES */
+.window {
+    display:            grid;
+    grid-template-rows: var(--title-bar-height) 1fr;
+
+    border-top:         var(--border1);
+    border-left:        var(--border1);
+    border-right:       var(--border2);
+    border-bottom:      var(--border2);
+    border-radius:      var(--border-radius);
+
+    overflow:           hidden;
+}
+
+.title-bar {
+    display:          flex;
+    align-items:      center;
+    gap:              var(--padding);
+
+    background-color: var(--accent-color);
+    padding:          calc(var(--padding) / 2) var(--padding);
+}
+.title-bar p {
+    color:       var(--title-color);
+    font-family: var(--title-font);
+}
+
+.window-content {
+    display:          flex;
+    flex-direction:   column;
+    
+    background-color: var(--bg-color-dark);
+    padding:          var(--padding);
+
+    backdrop-filter:  blur(5px);
+}
+.window-content * {
+    color: var(--text-color);
+}
+.window-content h1, .window-content h2 {
+    overflow-x:    hidden;
+    text-overflow: ellipsis;
+}
+
+:root {
+    --title-bar-height:  2rem;
+    --bar-button-size:   .9rem;
+
+    --title-font:        "blinker-medium";
+
+    --title-color:       #202020;
+    --text-color:        #F5F5F5;
+    --bg-color-dark:     #141420c4;
+    --accent-color:      #f68781;
+
+    --border1:           .12rem solid var(--accent-color);
+    --border2:           .12rem solid var(--accent-color);
+
+    --border-radius:     .3rem;
+    --padding:           .5rem;
+    --title-buttons-gap: .2rem
+}
+
+.std {
+    --border1:          .12rem solid var(--accent-color);
+    --border2:          .12rem solid var(--accent-color);
+}
+
+.win32 {
+    --title-bar-height:  2rem;
+    --bar-button-size:   1.1rem;
+
+    --title-font:        "windows";
+
+    --title-color:       #F5F5F5;
+    --text-color:        black;
+
+    --bg-color-dark:     #c0c0c0;
+    --accent-color:      #0000c8;
+
+    --border1:           .12rem solid #F5F5F5;
+    --border2:           .12rem solid black;
+
+    --border-radius:     0;
+    --padding:           .5rem;
+    --title-buttons-gap: 0rem
+}
+
+.macOS {
+    --title-bar-height:  3rem;
+    --bar-button-size:   1.08rem;
+
+    --title-font:        "montserrat";
+ 
+    --title-color:       #F5F5F5;
+    --text-color:        #F5F5F5;
+
+    --bg-color-dark:     #343338;
+    --accent-color:      #1d1c24;
+
+    --border1:           .12rem solid #555555;
+    --border2:           .12rem solid #555555;
+
+    --border-radius:     .5rem;
+    --padding:           .5rem;
+    --title-buttons-gap: .3rem
+}
+
+.neo {
+    --title-bar-height:  2.5rem;
+    --bar-button-size:   1.1rem;
+
+    --title-font:        "montserrat";
+    --default-font:      "nunito";
+ 
+    --title-color:       #F5F5F5;
+    --text-color:        #F5F5F5;
+
+    --bg-color-dark:     #343338;
+    --accent-color:      #1d1c24;
+
+    --border1:           .14rem solid var(--text-color);
+    --border2:           .14rem solid var(--text-color);
+
+    --border-radius:     .7rem;
+    --padding:           .5rem;
+    --title-buttons-gap: .3rem
+}
+
+.cute {
+    --title-bar-height:  3rem;
+    --bar-button-size:   1.35rem;
+
+    --title-font:        "chilet";
+    --default-font:      "chilet";
+ 
+    --title-color:       #F5F5F5;
+    --text-color:        #F5F5F5;
+
+    --bg-color-dark:     #383338;
+    --accent-color:      #1d1c24;
+
+    --border1:           .15rem solid var(--accent-color);
+    --border2:           .15rem solid var(--accent-color);
+
+    --border-radius:     1rem;
+    --padding:           .5rem;
+    --title-buttons-gap: .1rem
+}

@@ -1,0 +1,30 @@
+[
+    {
+        "type": "twitter",
+        "name": "Twitter"
+    },
+    {
+        "type": "twitch",
+        "name": "Twitch"
+    },
+    {
+        "type": "youtube",
+        "name": "Youtube"
+    },
+    {
+        "type": "discord",
+        "name": "Discord"
+    },
+    {
+        "type": "github",
+        "name": "Github"
+    },
+    {
+        "type": "instagram",
+        "name": "Instagram"
+    },
+    {
+        "type": "linkedin",
+        "name": "Linkedin"
+    }
+]

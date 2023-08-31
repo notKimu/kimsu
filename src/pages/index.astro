@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Kimsu Social">
+	<main class="grid">
+		<div class="presentation flex a-center gap-x radius-m padding-x light-border blur-bg-s">
+			<img class="logo" src="/takeout.webp" />
+			<h1 class="title">Kimsu</h1>
+		</div>
+
+		<div class="info-window blur-bg-s">
+			<div class="info-bar flex a-center gap-m radius-top-m">
+				<div class="flex a-center gap-s">
+					<div class="roundy circle" />
+					<div class="roundy circle" />
+					<div class="roundy circle" />
+				</div>
+				<p>Kimsu-social.sh</p>
+			</div>
+
+			<div class="info-content flex column gap-xx padding-x light-border radius-bottom-m">
+				<div>
+					<h2>What is Kimsu?</h2><br />
+					<div class="separator-line-s margin-m" /><br />
+					<p>Kimsu brings you a fast, customizable and free way to share all your socials in a single page.</p><br />
+					<p>You can customize everything to your liking without paying anything.</p><br />
+					<p class="blinker">Stop building and hosting your own pages to focus on other things, like playing league of legends</p>
+				</div>
+	
+				<div class="flex gap-m">
+					<a href="/create"><button class="hoverme default-border">Go!</button></a>
+					<a href="/about"><button class="hoverme default-border">About</button></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="card" />
+	</main>
+</Layout>
+
+<style>
+	main {
+		height:                calc(100dvh - var(--header-height));
+
+		gap:                   2rem;
+		grid-template-columns: auto 20rem;
+		grid-template-rows:    auto 1fr;
+		
+		background:            url("../../svg/gradient.svg");
+		background-size:       cover;
+		padding:               2rem;
+	}
+
+	.light-border {
+		border: var(--smol-border) solid var(--select-color);
+	}
+
+	.presentation {
+		background-color: var(--bg-color-dark);
+	}
+
+	.logo {
+		height: 10rem;
+	}
+
+	.title {
+		font-family:    var(--accent-font-b);
+		font-size:      7rem;
+		letter-spacing: .3rem;
+	}
+
+	.info-window {
+		display:            grid;
+		grid-column:        1/2;
+		grid-row:           2/2;
+		grid-template-rows: 2rem 1fr;
+
+		border-radius: var(--smol-border) var(--smol-border) 0 0;
+	}
+
+	.info-bar {
+		grid-row:         1/2;
+		background-color: var(--accent-color);
+		padding:          0 .5rem;
+	}
+
+	.roundy {
+		height:           .8rem;
+		width:            .8rem;
+
+		background-color: var(--select-color);
+	}
+
+	.info-content {
+		grid-row:         2/2;
+		background-color: var(--bg-color-dark);
+		border-radius:    0 0 var(radius-m) var(radius-m);
+	}
+
+	.card {
+		grid-column:      2/2;
+		grid-row:         span 2;
+
+		background:       url("/social_card_example.png");
+		background-size: cover;
+		border-radius:    0 1rem 0 0;
+	}
+
+	/**RESPONSIVE */
+	@media screen and (max-width: 950px) {
+		main {
+			grid-template-columns: 1fr;
+		}
+
+		.card {
+			display: none;
+		}
+	}
+	@media screen and (max-width: 623px) {
+		.logo {
+			height: 15dvw;
+		}
+		.title {
+			font-size: 15dvw;
+		}
+	}
+	@media screen and (max-width: 404px) {
+        main {
+            padding: 1rem;
+        }
+    }
+</style>
