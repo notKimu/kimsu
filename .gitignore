@@ -26,3 +26,4 @@ dist/
 .codesandbox/
 bun.lockb
 pnpm-lock.yaml
+.netlify/
